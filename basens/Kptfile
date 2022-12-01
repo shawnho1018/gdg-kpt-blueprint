@@ -12,3 +12,5 @@ pipeline:
       configPath: package-context.yaml
     - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
       configPath: update-rolebinding.yaml
+  validators:
+    - image: gcr.io/kpt-fn/gatekeeper:v0.2
