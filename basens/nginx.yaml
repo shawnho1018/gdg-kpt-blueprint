@@ -1,10 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: # kpt-merge: example/nginx
   labels:
     app: nginx
   name: nginx
-  namespace: example
+  namespace: backend
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|example|nginx'
 spec:
   replicas: 1
   selector:
@@ -26,3 +28,5 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "100m"
+      securityContext:
+        runAsNonRoot: true
