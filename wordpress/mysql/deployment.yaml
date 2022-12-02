@@ -18,15 +18,12 @@ metadata: # kpt-merge: /wordpress-mysql
   labels:
     app: wordpress
     tier: mysql
-    env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: '|Service|default|wordpress-mysql'
-  namespace: myexample
 spec:
   selector:
     app: wordpress
     tier: mysql
-    env: dev
   ports:
     - protocol: TCP
       port: 3306
@@ -39,10 +36,8 @@ metadata: # kpt-merge: /mysql-pv-claim
   labels:
     app: wordpress
     tier: mysql
-    env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: '|PersistentVolumeClaim|default|mysql-pv-claim'
-  namespace: myexample
 spec:
   resources:
     requests:
@@ -57,22 +52,18 @@ metadata: # kpt-merge: /wordpress-mysql
   labels:
     app: wordpress
     tier: mysql
-    env: dev
   annotations:
-    internal.kpt.dev/upstream-identifier: apps|Deployment|default|wordpress-mysql
-  namespace: myexample
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|default|wordpress-mysql'
 spec:
   selector:
     matchLabels:
       app: wordpress
       tier: mysql
-      env: dev
   template:
     metadata:
       labels:
         app: wordpress
         tier: mysql
-        env: dev
     spec:
       containers:
         - name: mysql

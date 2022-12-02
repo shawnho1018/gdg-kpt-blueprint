@@ -17,10 +17,8 @@ metadata: # kpt-merge: /wp-pv-claim
   name: wp-pv-claim
   labels:
     app: wordpress
-    env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: '|PersistentVolumeClaim|default|wp-pv-claim'
-  namespace: myexample
 spec:
   resources:
     requests:

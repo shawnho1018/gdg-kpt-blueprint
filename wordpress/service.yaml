@@ -17,16 +17,13 @@ metadata: # kpt-merge: /wordpress
   name: wordpress
   labels:
     app: wordpress
-    env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: '|Service|default|wordpress'
-  namespace: myexample
 spec:
   type: LoadBalancer
   selector:
     app: wordpress
     tier: frontend
-    env: dev
   ports:
     - protocol: TCP
       port: 80
