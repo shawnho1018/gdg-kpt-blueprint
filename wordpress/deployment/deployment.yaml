@@ -20,6 +20,7 @@ metadata: # kpt-merge: /wordpress
     env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: apps|Deployment|default|wordpress
+  namespace: myexample
 spec:
   selector:
     matchLabels:

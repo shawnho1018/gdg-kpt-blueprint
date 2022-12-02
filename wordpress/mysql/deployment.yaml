@@ -21,6 +21,7 @@ metadata: # kpt-merge: /wordpress-mysql
     env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: '|Service|default|wordpress-mysql'
+  namespace: myexample
 spec:
   selector:
     app: wordpress
@@ -41,6 +42,7 @@ metadata: # kpt-merge: /mysql-pv-claim
     env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: '|PersistentVolumeClaim|default|mysql-pv-claim'
+  namespace: myexample
 spec:
   resources:
     requests:
@@ -58,6 +60,7 @@ metadata: # kpt-merge: /wordpress-mysql
     env: dev
   annotations:
     internal.kpt.dev/upstream-identifier: apps|Deployment|default|wordpress-mysql
+  namespace: myexample
 spec:
   selector:
     matchLabels:
