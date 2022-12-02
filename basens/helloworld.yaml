@@ -29,7 +29,7 @@ spec:
             memory: "128Mi"
             cpu: "100m"
       securityContext:
-        runAsNonRoot: true
+        runAsNonRoot: false
         runAsUser: 1000
         runAsGroup: 1000
 ---
