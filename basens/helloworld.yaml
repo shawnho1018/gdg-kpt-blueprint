@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # kpt-merge: example/helloworld
+  labels:
+    app: helloworld
+  name: helloworld
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|example|helloworld'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - image: paulbouwer/hello-kubernetes:1.10.0
+        name: helloworld
+        port: 8080
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  selector:
+    app: helloworld 
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
